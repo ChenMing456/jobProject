@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 表格操作 </title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <style>
+        #but{
+            width:110px;height:40px;
+            background:white;
+            text-align:right
+        }
+    </style>
+    <script type="text/javascript">
+        //# 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+        window.onload = function(){
+            var tr=document.getElementsByTagName("tr");
+            for(var i=0;i<tr.length;i++)
+            {
+                tr[i].onmouseover=function(){
+                    this .style.backgroundColor="#f2f2f2";
+                };
+                tr[i].onmouseout=function(){
+                    this.style.backgroundColor="#fff";
+                }
+            }
+        };
+
+        // #编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+        function addt(){
+            var table=document.getElementById("table");
+            var tr=document.createElement("tr");
+            var td1=document.createElement("td");
+            var td2=document.createElement("td");
+            var td3=document.createElement("td");
+            td1.innerHTML="<input type='text/'>";
+            td2.innerHTML="<input type='text/'>";
+            td3.innerHTML="<a href='javascript:;' onclick='cleart(this)'>删除</a>";
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            table.appendChild(tr);
+        }
+
+
+        // #创建删除函数,注意不要使用关键词clear等命名函数。
+        function cleart(obj){
+            var table =obj.parentNode.parentNode.parentNode;
+            var tr=obj.parentNode.parentNode;
+            //obj-this-即a的父节点的父节点--tr；同理table
+            table.removeChild(tr);
+        }
+        //cleart(this)代表当前对象（this在哪个标签里，就代表哪个对象）
+
+    </script>
+</head>
+<body>
+<table border="1" width="50%" id="table">
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>操作</th>
+    </tr>
+
+    <tr>
+        <td>xh001</td>
+        <td>王小明</td>
+        <td><a href="#" onclick="cleart(this)" >删除</a></td>   <!--在删除按钮上添加点击事件  -->
+    </tr>
+
+    <tr>
+        <td>xh002</td>
+        <td>刘小芳</td>
+        <td><a href="#" onclick="cleart(this)" >删除</a></td>   <!--在删除按钮上添加点击事件  -->
+    </tr>
+
+</table>
+<input type="button"  id="but" value="添加一行" onclick="addt()"  />   <!--在添加按钮上添加点击事件  -->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面1-继承</title>
+</head>
+<body>
+
+</body>
+<script>
+    var A = function(Name) {
+        this.Name = Name;
+    };
+    A.prototype.sayname=function(theName) {
+        this.theName = theName;
+        console.log(theName);
+    };
+    A = new A('a_name');  // new是调用构造函数
+    //A.sayname('a1');
+
+    var B = function(age) {
+        this.age = age;
+    };
+    B.prototype.sayage= function(theage) {
+        this.theage = theage;
+        console.log(theage);
+    };
+    B = new B(12);  // new是调用构造函数
+
+    //c类
+    var C=function (name,age) {
+       this.sayname=A.sayname;
+       this.sayage=B.sayage;
+    };
+    var c=new C('bob',24);
+    c.prototype=A;
+    c.sayage(18);
+    c.sayname('c1');
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6-新增class继承</title>
+</head>
+<body>
+
+</body>
+<script>
+    //用class创建对象
+     class Leader{
+             constructor(name){//constructor构造函数
+                this.name=name;
+              }
+            hello(){//定义在原型上的函数
+                    alert('Hello, '+this.name+'!');
+              }
+         }
+     var liyi= new Leader('liyi');
+     liyi.name;//输出'liyi'
+     liyi.hello();//输出'Hello, liyi!'
+     //用extends继承扩展
+     class extendLeader extends Leader{
+             constructor(name,grade,skill){//若是不扩展Leader的构造函数，就可以将constructor这一步省去
+                     super(name); //从父类继承而来
+                     this.grade=grade;
+             　　　　 this.skill=skill;
+             　　}
+         　　run(){
+            　　　　console.log(this.name+'职位：'+this.grade+' 技能：'+this.skill);
+           　　}
+        }
+     var liyi=new extendLeader('liyi','研发经理','精通各种技术');
+     liyi.name;//'liyi'
+     liyi.grade;//'研发经理'
+     liyi.skill;//'精通各种技术'
+     liyi.hello;//'Hello, liyi!'
+     liyi.run();//'liyi职位：研发经理 技能：精通各种技术'
+</script>
+</html>
