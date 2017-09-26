@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三行-页面</title>
+    <style>
+        html,body{height: 100%;}
+        *{margin: 0;padding: 0;}
+        .all{ clear: both;  height: 100%;}
+        .head{
+           float: left;
+            height: 23px;
+            width: 100%;
+            background: pink;
+        }
+        .content{
+            float: left;
+            background-color: yellow;
+            height: 90%;
+            width: 100%;
+        }
+        .foot{
+            float: left;
+            height: 50px;
+            width: 100%;
+            background-color:blue;
+          bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="all">
+    <div class="head">1</div>
+    <div class="content">123</div>
+    <div class="foot" >33</div>
+</div>
+</body>
+<script>
+    var a=1;
+    function f() {
+     console.log(a);//输出undefined，因为变量申明提前
+     console.log(this.a);//输出1
+     var a=2;
+    }
+    f();//此处默认是全局变量调用的
+</script>
+</html>
